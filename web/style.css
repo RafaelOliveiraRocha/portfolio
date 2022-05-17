@@ -4,6 +4,10 @@ body, h1, h2, p, ul, li, a {
   padding: 0px;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 ul {
   list-style: none;
 }
@@ -22,7 +26,7 @@ img {
 }
 
 .container {
-  width: 960px;
+width: 960px;
 margin: 0 auto;
 padding: 0px;
 position: relative;
@@ -33,10 +37,8 @@ position: relative;
 .menu-bg {
   max-width: 100%;
   display: flex;
-  position: fixed;
   height: 60px;
   background: #6653DF;
-  z-index: 1000;
 }
 
 .logo-menu {
@@ -46,11 +48,9 @@ position: relative;
 }
 
 .menu-nav ul{
-  display: flex;
+  display: block;
   margin-top: 20px;
 }
-
-
 
 .menu-nav ul li a {
   font-family: Sira Fans;
@@ -58,24 +58,76 @@ position: relative;
   font-weight: bold;
   color: white;
   margin-right: 10px;
-  flex-wrap: wrap;
+  float: left;
 }
 
 .menu-nav ul li a:hover {
   border-bottom-style: double;
 }
 
-@media (max-width:700px){
- .menu-nav {
-   max-width: 700px;
- }
+[data-menu="button"] {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  [data-menu="button"] {
+    display: flex;
+    background: #222;
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 200;
+  }
+
+  [data-menu="button"]::before {
+    margin-right: 4px;
+    content: '';
+    display: inline-block;
+    height: 2px;
+    width: 12px;
+    background: white;
+    box-shadow: 0 4px white, 0 -4px white;
+    transition: .3s transform;
+  }
+
+  [data-menu="button"].active::before {
+    transform: rotate(90deg);
+  }
+
+  #menu {
+    display: none;
+    position: absolute;
+    background: #6653DF;
+    width: max-content;
+    z-index: 50;
+    top: 0;
+    padding: 60px 0 20px 0;
+    box-shadow: 2px 2px 2px 0 rgba(0,0,0,.2);
+  }
+
+  [data-menu="list"] li a {
+    margin-top: 7px;
+  }
+
+  #menu.active {
+    display: block;
+  }
+
 }
 /* HEADER FIM */
 
 /* SKILL INÍCIO */
-.sec-skill img{
+/* .sec-skill img{
   padding-top: 60px;
-}
+} */
 /* SKILL FIM */
 
 /* APRESENTAÇÃO INÍCIO */
@@ -180,6 +232,7 @@ position: relative;
   height: 660px;
   margin-top: 60px; 
   background: #224AB2;
+  overflow: hidden;
 }
 
 .titulo-projetos h1 {
@@ -194,7 +247,7 @@ position: relative;
 }
 
 .titulo-projetos h1:after {
-  content: '';
+    content: '';
     display: flex;
     width: 60px;
     height: 3px;
@@ -221,7 +274,7 @@ position: relative;
   max-width: 802px;
   margin: 0 20px;
   border-radius: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   box-shadow: 20px 20px 20px rgba(0,0,0,.9);
   opacity: .7;
   transform: scale(.7);
@@ -259,8 +312,8 @@ position: relative;
   height: 12px;
   background: white;
   border-radius: 50%;
-  overflow: hidden;
-  text-indent: -999px;
+  overflow:  hidden;
+  text-indent: 20px;
   margin: 5px;
 }
 
